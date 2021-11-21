@@ -7,12 +7,12 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Backoffice
                 </a>        
-                <a class="nav-link" href="{{url('#')}}">
+                <a class="nav-link" href="{{url('/newpost')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     New Post
                 </a>        
         </div>
-        <div class="sb-sidenav-footer">
+        <div class="sb-sidenav-footer mt-auto">
             <div class="small">Logged in as:</div>
             Start Bootstrap
         </div>
