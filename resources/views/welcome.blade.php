@@ -43,28 +43,52 @@
 
     {{-- End of navbar --}}
 
-    {{-- New Post --}}
+    {{-- start carousel --}}
+    <div class="container-fluid">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://picsum.photos/200/300" class="d-block w-100" height="500" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://picsum.photos/200/300" class="d-block w-100" height="500" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://picsum.photos/200/300" class="d-block w-100" height="500" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
 
-    <div class="container mt-5">
-        <h1>Title</h1>
-        <p>tanggal</p>
-        <h3>Sub-title</h3>
+    {{-- End of  carousel --}}
+
+    {{-- Introduction PT --}}
+
+    <div class="container mt-5 mx-auto">
+        <h1 class="">Title</h1>
         <img src="https://picsum.photos/200/300" width="500px" height="300px" class="rounded mx-auto d-block mt-5" alt="...">
         <br>
         <div class="row">
             <div class="col-10">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam porro officiis itaque atque repellendus necessitatibus at possimus, quos odit soluta deserunt veniam. Numquam nesciunt at dolores, odio laboriosam voluptatem non.</p>
-                <a href="#">baca selengkapnya</a>
             </div>
         </div>
     </div>
 
-    {{-- end of new post --}}
+    {{-- end of Introduction PT --}}
 
 
-    {{-- more articles --}}
+    {{-- New Article --}}
     <div class="container mt-5">
-        <h3>Artikel lainya</h3>
+        <h3>Berita terbaru</h3>
         <div class="card-group mt-4">
             <div class="card">
               <img src="https://picsum.photos/200/300" class="card-img-top" width="200" height="300" alt="...">
@@ -117,19 +141,10 @@
               </div>
             </div>
           </div>
+          <a href="">Lihat semua berita</a>
     </div>
 
-    <div class="container mt-5">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
-    </div>
+
 
     {{-- end of more article --}}
     
