@@ -37,30 +37,40 @@ Route::get('/detail/{id}', [App\Http\Controllers\PublicController::class, 'detai
 // route post komentar
 Route::post('detail/{id}', [App\Http\Controllers\PublicController::class, 'post_komentar'])->name('detail_article');
 
-Route::get('/dashboard', [App\Http\Controllers\BackOfficeController::class, 'index'])->name('dashboard');
-
-Route::get('/newpost', [App\Http\Controllers\NewPostController::class, 'index'])->name('newpost');
-
-// Route post article
-Route::post('/newpost/store', [App\Http\Controllers\NewPostController::class, 'store'])->name('newpost');
-
-// Route show detail article
-Route::get('/update/{id}', [App\Http\Controllers\BackOfficeController::class, 'detail'])->name('update');
-
-// Route carousel
-Route::get('/carousel',  [App\Http\Controllers\CarouselController::class, 'index'])->name('carousel');
-
-// Route update article
-Route::put('/update/{id}', [App\Http\Controllers\BackOfficeController::class, 'update'])->name('update');
-
-// Route delete article
-Route::get('/destroy/{id}', [App\Http\Controllers\BackOfficeController::class, 'destroy'])->name('dashboard');
-
-// Route store carousel
-Route::post('/carousel/store', [App\Http\Controllers\CarouselController::class, 'store'])->name('carousel');
-
-// Route delete carousel
-Route::get('/destroy/{id}', [App\Http\Controllers\CarouselController::class, 'destroy'])->name('carousel');
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+
+
+Route::group(['middleware' => ['role:admin']], function () {
+    // Route dashboard
+    Route::get('/dashboard', [App\Http\Controllers\BackOfficeController::class, 'index'])->name('dashboard');
+
+    // Route new post
+    Route::get('/newpost', [App\Http\Controllers\NewPostController::class, 'index'])->name('newpost');
+
+    // Route post article
+    Route::post('/newpost/store', [App\Http\Controllers\NewPostController::class, 'store'])->name('newpost');
+
+    // Route show detail article
+    Route::get('/update/{id}', [App\Http\Controllers\BackOfficeController::class, 'detail'])->name('update');
+
+    // Route carousel
+    Route::get('/carousel',  [App\Http\Controllers\CarouselController::class, 'index'])->name('carousel');
+
+    // Route update article
+    Route::put('/update/{id}', [App\Http\Controllers\BackOfficeController::class, 'update'])->name('update');
+
+    // Route delete article
+    Route::get('/destroy/{id}', [App\Http\Controllers\BackOfficeController::class, 'destroy'])->name('dashboard');
+
+    // Route store carousel
+    Route::post('/carousel/store', [App\Http\Controllers\CarouselController::class, 'store'])->name('carousel');
+
+    // Route delete carousel
+    Route::get('/destroy/{id}', [App\Http\Controllers\CarouselController::class, 'destroy'])->name('carousel');
+});

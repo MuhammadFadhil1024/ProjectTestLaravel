@@ -11,7 +11,8 @@ use App\Models\Article;
 use App\Models\Komentar;
 
 use App\Models\User;
-use App\Http\Controllers\Auth;
+// use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class PublicController extends Controller
 {
@@ -39,6 +40,7 @@ class PublicController extends Controller
 
     public function store(Request $request){
 
+        // dd(Auth::user()->id);
         $message = [
             'required' => 'form ini wajib diisi',
             'max' => 'from ini diisi maksimal 100 karakter'
@@ -50,24 +52,30 @@ class PublicController extends Controller
             'komentar' => 'required'
         ], $message);
 
-        $komentar = Komentar::create([
-            'email' => $request->email,
-            'nama' => $request->nama,
-            'komentar' => $request->komentar,
-        ]);
-        return redirect() -> back() 
-            -> with('success', 'komentar berhasil ditambahkan');
+        if (Auth::user() == null) {
+            return redirect() -> back() 
+            -> with('success', 'Anda harus login terlebih dahulu');
+        } else {
+            $komentar = Komentar::create([
+                'email' => $request->email,
+                'nama' => $request->nama,
+                'komentar' => $request->komentar,
+            ]);
+            return redirect() -> back() 
+                -> with('success', 'komentar berhasil ditambahkan');
+        }
+
     }
 
-    public function post_komentar (Request $request){
-        $id = auth()->id();
-        // dd($id);
-        $save = komentar::create([
-            'user_id' => $id,
-            'id_article' => $request->id_article,
-            'content' => $request->content,
-        ]);
-        return redirect() -> back() 
-            -> with('success', 'komentar berhasil ditambahkan');
-    }
+    // public function post_komentar (Request $request){
+    //     $id = auth()->id();
+    //     // dd($id);
+    //     $save = komentar::create([
+    //         'user_id' => $id,
+    //         'id_article' => $request->id_article,
+    //         'content' => $request->content,
+    //     ]);
+    //     return redirect() -> back() 
+    //         -> with('success', 'komentar berhasil ditambahkan');
+    // }
 }
