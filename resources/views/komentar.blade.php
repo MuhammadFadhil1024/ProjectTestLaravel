@@ -35,48 +35,75 @@
                     @endif
                 @endauth
                 @endif
-                </div>
               </div>
+              <a href="/kritik" class="text-black">kritik dan saran</a>
+              <a href="{{ route('logout') }}">Logout</a>
             </div>
+          </div>
           </nav>
     </div>
 
     {{-- End of navbar --}}
-
-    {{-- Detail article --}}
-
     <div class="container mt-5">
-        <h1>{{$detail->title}}</h1>
-        <h3>{{$detail->sub_title}}</h3>
-        <p>{{$detail->date}}</p>
-        <img src="{{url('/storage/'.$detail->image)}}" width="500px" height="300px" class="rounded mx-auto d-block mt-5" alt="...">
-        <br>
-        <div class="row">
-            <div class="col">
-                <p>{{$detail->content}}</p>
-            </div>
+      @if(Session::has('success'))
+      <div class="alert alert-success">
+          {{ Session::get('success') }}
+          @php
+              Session::forget('success');
+          @endphp
+      </div>
+      @endif
+    <div class="container mt-5">
+      <div class="card" style="width: 80%;">
+        <div class="card-body">
+          <h5 class="card-title">Kritik dan Saran</h5>
+            <form action="/komentar/store" method="POST">
+              @csrf
+              <div class="mb-3">
+                <label class="form-label">email</label>
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              @if ($errors->has('email'))
+              <span class="text-danger small">
+                <p>{{$errors->first('email')}}</p>
+              </span>
+              @endif
+              <div class="mb-3">
+                <label class="form-label">nama</label>
+                <input type="text" class="form-control" name="nama">
+              </div>
+              @if ($errors->has('nama'))
+              <span class="text-danger small">
+                <p>{{$errors->first('nama')}}</p>
+              </span>
+              @endif
+              <label class="form-label">komentar</label>
+              <div class="form-floating mb-3">
+                <textarea class="form-control" name="komentar" placeholder="komentar" id="floatingTextarea2" style="height: 100px"></textarea>
+              </div>
+              @if ($errors->has('komentar'))
+              <span class="text-danger small">
+                <p>{{$errors->first('komentar')}}</p>
+              </span>
+              @endif
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
+      </div>
+      
+
+      <h3 class="mt-5">Komentar</h3>
+      @foreach ($daftar_komentar as $item)
+        <div class="col-8">
+          <h5>{{$item->nama}}</h5>
+          <h6>{{$item->email}}<h6>
+            <p>{{$item->komentar}}</p>
+            <hr>
+        </div>
+      @endforeach
     </div>
 
-    
-      {{-- @foreach ($coba->komentar->id->count() as $item)
-          
-    
-    </div>
-
-    {{-- Detail articel --}}
-
-
- 
-    
-    <div class="container mt-5">
-        <footer class="footer mt-auto py-3 bg-light">
-            <div class="container">
-              <span class="text-muted">Place sticky footer content here.</span>
-            </div>
-        </footer>
-    </div>
-
+   
 
     <!-- Optional JavaScript; choose one of the two! -->
 

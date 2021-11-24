@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +15,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
+
+Route::get('logout',  [LoginController::class,'logout'])->name('logout');
+// Route welcome
+Route::get('/', [App\Http\Controllers\PublicController::class, 'index'])->name('welcome');
+
+// route page komentar
+Route::get('/komentar', [App\Http\Controllers\PublicController::class, 'komentar'])->name('komentar');
+
+// route komentar store
+Route::post('/komentar/store', [App\Http\Controllers\PublicController::class, 'store'])->name('komentar');
+
+// route detail artikel
+Route::get('/detail/{id}', [App\Http\Controllers\PublicController::class, 'detail'])->name('detail_article');
+
+// route post komentar
+Route::post('detail/{id}', [App\Http\Controllers\PublicController::class, 'post_komentar'])->name('detail_article');
 
 Route::get('/dashboard', [App\Http\Controllers\BackOfficeController::class, 'index'])->name('dashboard');
 
@@ -43,5 +61,6 @@ Route::post('/carousel/store', [App\Http\Controllers\CarouselController::class, 
 
 // Route delete carousel
 Route::get('/destroy/{id}', [App\Http\Controllers\CarouselController::class, 'destroy'])->name('carousel');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

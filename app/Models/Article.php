@@ -14,4 +14,8 @@ class Article extends Model
         'title', 'date', 'sub_title', 'content', 'image'
     ];
     public $timestamps = false;
+
+    public function komentar(){
+        return $this->hasMany(komentar::class);
+    }
 }

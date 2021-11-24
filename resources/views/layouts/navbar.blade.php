@@ -45,9 +45,12 @@
                                 @csrf
                             </form>
                         </div>
+                        <a href="/komentar">Kritik dan saran</a>
                     </li>
                 @endguest
             </ul>
+            <li>
+            </li>
         </div>
     </div>
 </nav>

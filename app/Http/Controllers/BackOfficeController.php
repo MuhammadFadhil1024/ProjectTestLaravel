@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Article;
 
+use App\Models\Komentar;
+
 class BackOfficeController extends Controller
 {
 
@@ -13,9 +15,10 @@ class BackOfficeController extends Controller
 
         $article = Article::count();
         $list = Article::All();
+        $komentar = Komentar::count();
         // dd($article);
 
-        return view('backoffice.dashboard', compact('article', 'list'));
+        return view('backoffice.dashboard', compact('article', 'list','komentar'));
     }
 
     public function detail($id){

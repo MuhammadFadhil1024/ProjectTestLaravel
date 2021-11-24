@@ -35,27 +35,25 @@
                     @endif
                 @endauth
                 @endif
-                </div>
               </div>
+              <a href="/komentar" class="text-black">kritik dan saran</a>
             </div>
+          </div>
           </nav>
     </div>
 
     {{-- End of navbar --}}
 
     {{-- start carousel --}}
+    
     <div class="container-fluid">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://picsum.photos/200/300" class="d-block w-100" height="500" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://picsum.photos/200/300" class="d-block w-100" height="500" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://picsum.photos/200/300" class="d-block w-100" height="500" alt="...">
-          </div>
+          @foreach ($carousel as $item)
+            <div class="carousel-item active">
+              <img src="{{url('/carousel_image/'.$item->nama_gambar)}}" class="d-block w-100" height="500" alt="...">
+            </div> 
+          @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -88,60 +86,21 @@
 
     {{-- New Article --}}
     <div class="container mt-5">
-        <h3>Berita terbaru</h3>
+        <h3>Berita</h3>
         <div class="card-group mt-4">
+          @foreach ($article as $item)
             <div class="card">
-              <img src="https://picsum.photos/200/300" class="card-img-top" width="200" height="300" alt="...">
+                  
+              <img src="{{url('/storage/'.$item->image)}}" class="card-img-top" width="200" height="300" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title">{{$item->title}}</h5>
+                <p class="card-text">{{Str::limit($item->content,200)}}</p>
+                <p class="card-text"><small class="text-muted">di upload pada {{$item->date}}</small></p>
+                <a href="/detail/{{$item->id}}">Baca selengkapnya</a>
               </div>
             </div>
-            <div class="card">
-              <img src="https://picsum.photos/200/300" width="200" height="300" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-            <div class="card">
-              <img src="https://picsum.photos/200/300" width="200" height="300" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-          <div class="card-group mt-4">
-            <div class="card">
-              <img src="https://picsum.photos/200/300" class="card-img-top" width="200" height="300" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-            <div class="card">
-              <img src="https://picsum.photos/200/300" width="200" height="300" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-            <div class="card">
-              <img src="https://picsum.photos/200/300" width="200" height="300" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-          <a href="">Lihat semua berita</a>
+          @endforeach
+
     </div>
 
 
