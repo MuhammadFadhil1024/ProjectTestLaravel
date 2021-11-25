@@ -10,6 +10,8 @@ use App\Models\Article;
 
 use App\Models\Komentar;
 
+use App\Models\Visi;
+
 use App\Models\User;
 // use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Auth;
@@ -17,12 +19,11 @@ use Illuminate\Support\Facades\Auth;
 class PublicController extends Controller
 {
     public function index(){
-        $carousel = Carousel::All();
+        $carousel = Carousel::first();
         $article = Article::All();
+        $visi = Visi::first();
         
-
-        
-        return view('welcome', compact('carousel', 'article'));
+        return view('welcome', compact('carousel', 'article', 'visi'));
     }
     
     public function detail($id){

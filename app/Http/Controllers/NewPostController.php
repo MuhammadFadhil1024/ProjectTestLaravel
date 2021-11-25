@@ -32,7 +32,7 @@ class NewPostController extends Controller
             'max' => 'from ini diisi maksimal 100 karakter'
         ];
         $this->validate($request, [
-            // 'image' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
             'title' => 'required|max:100',
             'sub_title' => 'required|max:100'
         ], $message);

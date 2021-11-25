@@ -8,6 +8,8 @@ use App\Models\Article;
 
 use App\Models\Komentar;
 
+use App\Models\Visi;
+
 class BackOfficeController extends Controller
 {
 
@@ -16,9 +18,10 @@ class BackOfficeController extends Controller
         $article = Article::count();
         $list = Article::All();
         $komentar = Komentar::count();
+        $visi = Visi::all();
         // dd($article);
 
-        return view('backoffice.dashboard', compact('article', 'list','komentar'));
+        return view('backoffice.dashboard', compact('article', 'list','komentar', 'visi'));
     }
 
     public function detail($id){

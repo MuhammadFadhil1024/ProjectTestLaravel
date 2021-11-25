@@ -49,6 +49,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['role:admin']], function () {
     // Route dashboard
     Route::get('/dashboard', [App\Http\Controllers\BackOfficeController::class, 'index'])->name('dashboard');
+    
+    // Route visi update
+    Route::get('/visi/{id}', [App\Http\Controllers\VisiController::class, 'detail'])->name('visi');
+    
+    // Route visi update
+    Route::put('/visi/{id}', [App\Http\Controllers\VisiController::class, 'update'])->name('visi');
 
     // Route new post
     Route::get('/newpost', [App\Http\Controllers\NewPostController::class, 'index'])->name('newpost');
@@ -58,12 +64,13 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     // Route show detail article
     Route::get('/update/{id}', [App\Http\Controllers\BackOfficeController::class, 'detail'])->name('update');
-
+    
+    // Route update article
+    Route::put('/update/{id}', [App\Http\Controllers\BackOfficeController::class, 'update'])->name('update');
+    
     // Route carousel
     Route::get('/carousel',  [App\Http\Controllers\CarouselController::class, 'index'])->name('carousel');
 
-    // Route update article
-    Route::put('/update/{id}', [App\Http\Controllers\BackOfficeController::class, 'update'])->name('update');
 
     // Route delete article
     Route::get('/destroy/{id}', [App\Http\Controllers\BackOfficeController::class, 'destroy'])->name('dashboard');

@@ -85,6 +85,39 @@
                   </div>
               </div>
           </div>
+
+
+          <div class="card mb-4">
+              <div class="card-header">
+                  <i class="fas fa-table mr-1"></i>
+                  Visi dan Misi
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                              <tr>
+                                  <th>Title</th>
+                                  <th>Content</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach ($visi as $item)
+                                <tr>
+                                    <td>{{$item->title}}</td>
+                                    <td>{{$item->content}}</td>
+                                    {{-- <td>{{$item->date}}</td> --}}
+                                    <td>
+                                        <a type="button" href="/visi/{{$item->id}}" class="btn btn-success ps-2">Update</a>
+                                    </td>
+                                </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
       </div>
   </main>
   <footer class="py-4 bg-light mt-auto">

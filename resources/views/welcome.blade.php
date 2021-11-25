@@ -49,20 +49,12 @@
     <div class="container-fluid">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          @foreach ($carousel as $item)
-            <div class="carousel-item active">
-              <img src="{{url('/carousel_image/'.$item->nama_gambar)}}" class="d-block w-100" height="500" alt="...">
-            </div> 
-          @endforeach
+          <div class="carousel-item active">
+            <img src="{{url('/carousel_image/'.$carousel->nama_gambar)}}" class="d-block w-100" height="500" alt="...">
+          </div> 
+          {{-- @foreach ($carousel as $item)
+          @endforeach --}}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
 
@@ -71,12 +63,12 @@
     {{-- Introduction PT --}}
 
     <div class="container mt-5 mx-auto">
-        <h1 class="">Title</h1>
-        <img src="https://picsum.photos/200/300" width="500px" height="300px" class="rounded mx-auto d-block mt-5" alt="...">
+        <h1 class="">{{$visi->title}}</h1>
+        <img src="{{url('/storage/'.$visi->image)}}" width="500px" height="300px" class="rounded mx-auto d-block mt-5" alt="...">
         <br>
         <div class="row">
             <div class="col-10">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam porro officiis itaque atque repellendus necessitatibus at possimus, quos odit soluta deserunt veniam. Numquam nesciunt at dolores, odio laboriosam voluptatem non.</p>
+                <p>{{$visi->content}}</p>
             </div>
         </div>
     </div>
@@ -110,7 +102,7 @@
     <div class="container mt-5">
         <footer class="footer mt-auto py-3 bg-light">
             <div class="container">
-              <span class="text-muted">Place sticky footer content here.</span>
+              <span class="text-muted">PT.Kelapa Sawit</span>
             </div>
         </footer>
     </div>
