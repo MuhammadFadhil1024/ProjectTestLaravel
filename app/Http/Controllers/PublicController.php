@@ -68,15 +68,4 @@ class PublicController extends Controller
 
     }
 
-    // public function post_komentar (Request $request){
-    //     $id = auth()->id();
-    //     // dd($id);
-    //     $save = komentar::create([
-    //         'user_id' => $id,
-    //         'id_article' => $request->id_article,
-    //         'content' => $request->content,
-    //     ]);
-    //     return redirect() -> back() 
-    //         -> with('success', 'komentar berhasil ditambahkan');
-    // }
 }

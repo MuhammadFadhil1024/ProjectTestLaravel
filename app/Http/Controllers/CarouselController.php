@@ -14,22 +14,28 @@ class CarouselController extends Controller
         return view('backoffice.carousel', compact('list'));
     }
 
+    
     public function store(Request $request){
-        $image = $request->file('nama_gambar');
-        
-        $image_name = time() . "_" . $image->getClientOriginalName();
-
-        // dd($image_name);
-
-        $tujuan_upload = 'carousel_image';
-        $image->move($tujuan_upload, $image_name);
-
-        $image = Carousel::create([
-            'nama_gambar' => $image_name
-        ]);
-
-        return redirect('carousel')
-        -> with('success', 'Article berhasil ditambah');
+        if ($request->hasFile('image')) {
+            $image = $request->file('nama_gambar');
+            
+            $image_name = time() . "_" . $image->getClientOriginalName();
+    
+            // dd($image_name);
+    
+            $tujuan_upload = 'storage';
+            $image->move($tujuan_upload, $image_name);
+    
+            $image = Carousel::create([
+                'nama_gambar' => $image_name
+            ]);
+    
+            return redirect('carousel')
+            -> with('success', 'Article berhasil ditambah');   
+        }else {
+            return redirect() -> back() 
+            -> with('success', 'masukkan gambar terlebih dahulu');
+        }
     }
 
     public function destroy($id){

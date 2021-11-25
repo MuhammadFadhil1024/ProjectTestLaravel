@@ -7,6 +7,14 @@
           <ol class="breadcrumb mb-4">
               <li class="breadcrumb-item active">Tambah gambar corousel</li>
           </ol>
+          @if(Session::has('success'))
+          <div class="alert alert-success">
+              {{ Session::get('success') }}
+              @php
+                  Session::forget('success');
+              @endphp
+          </div>
+          @endif
           <form action='carousel/store' method="POST" enctype="multipart/form-data">
 
                 {{ csrf_field() }}

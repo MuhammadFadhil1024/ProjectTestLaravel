@@ -37,6 +37,10 @@
                 @endif
               </div>
               <a href="/komentar" class="text-black">kritik dan saran</a>
+              <a href="{{ route('logout') }}"> {{ __('Logout') }}</a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
             </div>
           </div>
           </nav>
